@@ -80,6 +80,11 @@ ul li img {
     height: 900px;
 }
 
+#about .about-data {
+    display: flex;
+    justify-content: space-between;
+}
+
 pre {
     color:white
 }
@@ -106,5 +111,17 @@ pre {
 h4 {
     border-bottom: 3px solid white;
     text-align: center;
-    width: 80px;
+    width: 100px;
+}
+
+#about aside img {
+    max-width:100px;
+    margin-left: 15px;
+
+}
+
+#about aside .tech-logos {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
