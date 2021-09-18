@@ -16,7 +16,7 @@ nav{
     justify-content: space-around;
 }
 
-nav a,#home .title a,#projects .current-project button{
+nav a,#home .title a,#projects #current-project button{
     border:2px solid white;
     background: none;
     cursor: pointer;
@@ -54,7 +54,7 @@ html {
     height: 600px;
 }
 
-.current-project {
+#current-project {
     margin-top: 30px;
     display: flex;
     justify-content: center;
@@ -77,6 +77,12 @@ ul li {
 
 ul li img {
     width:180px
+}
+
+#start {
+    width: 120px;
+    height: 40px;
+    transition: width 2s, height 2s;
 }
 
 #about {

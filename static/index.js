@@ -10,3 +10,17 @@ function setActive (id) {
 
     }        
 }
+
+function expand (id) {
+    let el = document.getElementById(id);
+    el.style.height = "300px";
+    el.style.width = "1000px";
+    el.setAttribute('onclick','contract(id)')
+}
+
+function contract(id) {
+    let el = document.getElementById(id);
+    el.style.height = "40px";
+    el.style.width = "120px";
+    el.setAttribute('onclick','expand(id)')
+}
