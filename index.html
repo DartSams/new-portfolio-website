@@ -38,18 +38,21 @@ Im a full stack web developer.</pre>
         <div id="current-project">
             <button id="start" onclick="expand(id)"><img src="static/images/down.png" alt="" id="img_button"> Current Project <img src="static/images/down.png" alt="" id="img_button"></button>
         </div>
-        <ul>
-            <li> BlackJack<img src="static/images/project_preview/blackjack preview.PNG" alt=""></li>
+        <ul id="list">
+            <!-- <li> BlackJack<img src="static/images/project_preview/blackjack preview.PNG" alt=""></li>
             <li>Discord Bot<img src="static/images/project_preview/Discord-Server-Banner.jpg" alt=""></li>
             <li>CRUD App<img src="static/images/project_preview/flask rest crud preview.PNG" alt=""></li>
-            <li>MySQL App<img src="static/images/project_preview/mysql preview.png" alt=""></li>
+            <li>MySQL App<img src="static/images/project_preview/mysql preview.png" alt=""></li> -->
             
             <!-- <li>Random Person Generator<img src="static/images/project_preview/rpg preview.PNG" alt=""></li> -->
             <!-- <li>Space Invaders<img src="static/images/project_preview/space invaders preview.PNG" alt=""></li> -->
             <!-- <li>Speed typing test<img src="static/images/project_preview/speed typing preview.PNG" alt=""></li> -->
             <!-- <li>Tic-Tac-Toe<img src="static/images/project_preview/tictactoe preview.PNG" alt=""></li> -->
-        </ul>
-        
+        </ul>     
+        <img src="static/images/right.png" alt="" style = "width: 50px;" onclick="nextUp()">
+        <div id="hh" name="hh">
+            <p>vfb</p>
+        </div>   
         <p class="notes">Later on add PAGINATION</p>
     </div>
 
@@ -98,20 +101,58 @@ my knowledge.</pre>
         
     </div>
 
-    <!-- <script>
-        function setActive (id) {
-        console.log(id)
-        var navBar = document.getElementById("nav-bar").childNodes;
-        var i;
-        console.log(c)
-        for (i = 0; i < navBar.length; i++) {
-            c[i+=1].style.backgroundColor = "";
-            let activeButton;
-            activeButton = document.getElementById(id);
-            activeButton.style.backgroundColor="red"
+    <script>
+        const projects_images = [
+            "blackjack preview.PNG","Discord-Server-Banner.jpg","flask rest crud preview.PNG","mysql preview.png",
+            "rpg preview.PNG","space invaders preview.PNG","speed typing preview.PNG","tictactoe preview.PNG"
+        ]
 
-        }        
+        const projects_names = [
+            "blackjack preview","Discord Server Bot","flask rest crud preview","mysql preview",
+            "rpg preview","space invaders preview","speed typing preview","tictactoe preview"
+        ]
+        let ul = document.getElementById("list")
+        // ul.style.width = "850px"
+        for (let i = 0;i<projects_images.length/2;i+=1) {
+            let li = document.createElement("li");
+            let img = document.createElement("img");
+            img.src = 'static/images/project_preview/' + projects_images[i]
+            li.appendChild(img);
+            li.appendChild(document.createTextNode(projects_names[i]))
+            // console.log(li)
+            ul.appendChild(li)
+
         }
-    </script> -->
+
+        let right = document.createElement("img");
+        right.src = "static/images/right.png"
+        right.style.width="30px"
+        right.setAttribute('onclick','nextUp()')
+        ul.appendChild(right)
+
+        function nextUp() {
+            ul.innerHTML = ""
+            let num = 4
+            for (let i = num;i<projects_images.length;i++) {
+                console.log(projects_images.length)
+                if (i === projects_images.length) {
+                    console.log(i)
+                } else {
+                    let li = document.createElement("li");
+                    let img = document.createElement("img");
+                    img.src = 'static/images/project_preview/' + projects_images[i]
+                    li.appendChild(img);
+                    li.appendChild(document.createTextNode(projects_names[i]))
+                    // console.log(li)
+                    ul.appendChild(li)
+                }
+            }
+            let right = document.createElement("img");
+            right.src = "static/images/right.png"
+            right.style.width="30px"
+            right.setAttribute('onclick','nextUp()')
+            ul.appendChild(right)
+        }
+    </script>
 </body>
 </html>
