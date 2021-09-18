@@ -49,10 +49,6 @@ Im a full stack web developer.</pre>
             <!-- <li>Speed typing test<img src="static/images/project_preview/speed typing preview.PNG" alt=""></li> -->
             <!-- <li>Tic-Tac-Toe<img src="static/images/project_preview/tictactoe preview.PNG" alt=""></li> -->
         </ul>     
-        <img src="static/images/right.png" alt="" style = "width: 50px;" onclick="nextUp()">
-        <div id="hh" name="hh">
-            <p>vfb</p>
-        </div>   
         <p class="notes">Later on add PAGINATION</p>
     </div>
 
@@ -126,17 +122,19 @@ my knowledge.</pre>
 
         let right = document.createElement("img");
         right.src = "static/images/right.png"
-        right.style.width="30px"
+        right.style.width="50px"
+        right.style.height="50px"
         right.setAttribute('onclick','nextUp()')
         ul.appendChild(right)
 
         function nextUp() {
             ul.innerHTML = ""
-            let num = 4
+            let num = 4;
+            let i = 0;
             for (let i = num;i<projects_images.length;i++) {
                 console.log(projects_images.length)
                 if (i === projects_images.length) {
-                    console.log(i)
+                    // 
                 } else {
                     let li = document.createElement("li");
                     let img = document.createElement("img");
@@ -147,9 +145,45 @@ my knowledge.</pre>
                     ul.appendChild(li)
                 }
             }
+            // console.log()
+            let first = ul.firstElementChild
+            let left = document.createElement("img");
+            left.src = "static/images/left.png"
+            left.style.width="50px"
+            left.style.height="50px"
+            left.setAttribute('onclick','perviousDown()')
+            first.before(left)
+
             let right = document.createElement("img");
             right.src = "static/images/right.png"
-            right.style.width="30px"
+            right.style.width="50px"
+            right.style.height="50px"
+            right.setAttribute('onclick','nextUp()')
+            ul.appendChild(right)
+        }
+
+        function perviousDown() {
+            ul.innerHTML = ""
+            let num = 0;
+            let i = 0;
+            for (let i = num;i<projects_images.length/2;i++) {
+                console.log(projects_images.length)
+                if (i === projects_images.length) {
+                    //
+                } else {
+                    let li = document.createElement("li");
+                    let img = document.createElement("img");
+                    img.src = 'static/images/project_preview/' + projects_images[i]
+                    li.appendChild(img);
+                    li.appendChild(document.createTextNode(projects_names[i]))
+                    ul.appendChild(li)
+                }
+            }
+
+            let right = document.createElement("img");
+            right.src = "static/images/right.png"
+            right.style.width="50px"
+            right.style.height="50px"
             right.setAttribute('onclick','nextUp()')
             ul.appendChild(right)
         }
