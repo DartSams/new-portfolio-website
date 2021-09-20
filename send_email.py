@@ -12,10 +12,10 @@ def main(sender,sender_email,message):
     # s.ehlo()
     
     # Authentication
-    try:
-        s.login(login, password)
-    except:
-        print("Login Credentials is wrong.")
+    # try:
+    s.login(login, password)
+    # except:
+    #     print("Login Credentials is wrong.")
 
     # message to be sent
     message = f"""
