@@ -38,6 +38,8 @@ def sendEmail(subject,body,sender,recipient):
 
 @app.route("/")
 def index():
+    sendEmail('Dart',"test999","bye","godofanime72@gmail.com")
+
     return render_template("index.html")
 
 
