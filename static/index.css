@@ -134,14 +134,11 @@ pre {
 
 #about aside .tech-logos {
     display: flex;
-    /* justify-content: space-evenly; */
     flex-wrap: wrap;
 }
 
 #contact {
     height: 600px;
-    /* width: 200px; */
-    /* border: 1px solid rgb(133, 131, 131); */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -160,7 +157,6 @@ pre {
     background-color: rgb(30,  29,  50);
     margin-top:5px;
     resize: none;
-    /* background: transparent; */
     font-size: 20px;
 }
 
@@ -172,7 +168,6 @@ pre {
     border-radius: 10px;
     text-align: center;
     font-size: 20px;
-
 }
 
 #contact .contact-form a:hover {
@@ -180,9 +175,30 @@ pre {
     background-color: rgb(121,  97, 248);
 }
 
-.notes {
-    color:yellow;
-    display:flex;
+
+#popup-container {
+    display: none;
     justify-content: center;
     align-items: center;
+    position: fixed;
+    top:0;
+    left:0;
+    height: 100vh;
+    width:100vw;
+    background-color: rgba(0,0,0,0.6);
+}
+
+.popup {
+    background-color: white;
+    width: 300px;
+    max-width: 100%;
+    padding:10px 30px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.popup .popup-header {
+    margin: 0;
+    display: flex;
+    justify-content: flex-end;
 }

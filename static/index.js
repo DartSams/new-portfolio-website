@@ -105,5 +105,12 @@ function createCurrentProject (id) {
     },2000)
 }
 
+function openPopup () {
+    let popupContainer = document.getElementById("popup-container")
+    popupContainer.style.display = "flex"
+}
 
-
+function closePopup () {
+    let popupContainer = document.getElementById("popup-container")
+    popupContainer.style.display = "none"
+}

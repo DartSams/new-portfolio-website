@@ -5,11 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio website</title>
-    <!-- <link rel="stylesheet" href="static/index.css"> -->
-    <!-- <script src="static/index.js"></script> -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}" />
-    <!-- <script rel="stylesheet" href="{{ url_for('static', filename='index.js') }}" /script> -->
-    <script src="{{url_for('static', filename='index.js')}}"></script>
+    <link rel="stylesheet" href="static/index.css">
+    <script src="static/index.js"></script>
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}" />
+    <script src="{{url_for('static', filename='index.js')}}"></script> -->
 
 </head>
 <body>
@@ -38,22 +37,12 @@ Im a full stack web developer.</pre>
     <div id="projects">
         <br>
         <br>
-        <!-- <h2>Previous Projects</h2> -->
         <div id="current-project">
             <button id="start" onclick="expand(id)"><img src="static/images/down.png" alt="" id="img_button"> Current Project <img src="static/images/down.png" alt="" id="img_button"></button>
         </div>
         <ul id="list">
-            <!-- <li> BlackJack<img src="static/images/project_preview/blackjack preview.PNG" alt=""></li>
-            <li>Discord Bot<img src="static/images/project_preview/Discord-Server-Banner.jpg" alt=""></li>
-            <li>CRUD App<img src="static/images/project_preview/flask rest crud preview.PNG" alt=""></li>
-            <li>MySQL App<img src="static/images/project_preview/mysql preview.png" alt=""></li> -->
-            
-            <!-- <li>Random Person Generator<img src="static/images/project_preview/rpg preview.PNG" alt=""></li> -->
-            <!-- <li>Space Invaders<img src="static/images/project_preview/space invaders preview.PNG" alt=""></li> -->
-            <!-- <li>Speed typing test<img src="static/images/project_preview/speed typing preview.PNG" alt=""></li> -->
-            <!-- <li>Tic-Tac-Toe<img src="static/images/project_preview/tictactoe preview.PNG" alt=""></li> -->
+
         </ul>     
-        <p class="notes">Later on add PAGINATION</p>
     </div>
 
     <div id="about">
@@ -81,13 +70,10 @@ my knowledge.</pre>
                 <div><img src="static/images/js logo.png" alt=""></div>
                 <div><img src="static/images/mysql logo.png" alt=""></div>
             </div>
-            
         </aside>
     </div>
 
     <div id="contact">
-        <!-- <br>
-        <br> -->
         <h2>Contact</h2>
         <h4>Have a question or want to work together?</h4>
         <div class="contact-form">
@@ -97,9 +83,21 @@ my knowledge.</pre>
             <a type="submit" onclick="sendInfo()">Submit</a>
         </div>
 
-        
+        <div id="popup-container">
+            <div class="popup">
+                <div class="popup-header"><button onclick="closePopup()">X</button></div>
+                <div class="popup-body"><h3>Your email has been successfully sent.</h3></div>
+                <div class="popup-footer">
+                    <button id="close" onclick="closePopup()">
+                        OK
+                    </button>
+                </div>
+            </div>
+        </div>
         
     </div>
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
 
     <script type="text/javascript" charset="utf-8">
@@ -109,8 +107,12 @@ my knowledge.</pre>
             let name = document.getElementById("name").value
             let email = document.getElementById("email").value
             let message = document.getElementById("contact-message").value
-            // console.log(name,email,message)
             socket.emit("contact",{name:name,email:email,message:message})
+
+            document.getElementById("name").value = ""
+            document.getElementById("email").value = ""
+            document.getElementById("contact-message").value = ""
+            openPopup()
         }
 
         socket.on("contact" ,function(msg){
@@ -127,16 +129,13 @@ my knowledge.</pre>
             "rpg preview","space invaders preview","speed typing preview","tictactoe preview"
         ]
         let ul = document.getElementById("list")
-        // ul.style.width = "850px"
         for (let i = 0;i<projects_images.length/2;i+=1) {
             let li = document.createElement("li");
             let img = document.createElement("img");
             img.src = 'static/images/project_preview/' + projects_images[i]
             li.appendChild(img);
             li.appendChild(document.createTextNode(projects_names[i]))
-            // console.log(li)
             ul.appendChild(li)
-
         }
 
         let right = document.createElement("img");
@@ -160,11 +159,9 @@ my knowledge.</pre>
                     img.src = 'static/images/project_preview/' + projects_images[i]
                     li.appendChild(img);
                     li.appendChild(document.createTextNode(projects_names[i]))
-                    // console.log(li)
                     ul.appendChild(li)
                 }
             }
-            // console.log()
             let first = ul.firstElementChild
             let left = document.createElement("img");
             left.src = "static/images/left.png"
