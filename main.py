@@ -10,6 +10,8 @@ from flask_socketio import (
     leave_room,
 )  # replaces post requests
 
+from send_email import main
+
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "hello"  # use session to save personal data to so user doesnt have to log in over and over
@@ -24,6 +26,7 @@ def index():
 @socketio.on("contact")
 def contact(msg):
     print(msg)
+    main(msg["name"],msg["email"],msg["message"])
 
 if __name__ == "__main__":
     socketio.run(app,debug=True)
