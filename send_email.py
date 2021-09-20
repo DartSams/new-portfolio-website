@@ -6,7 +6,7 @@ def main(sender,sender_email,message):
     password = "Dartagnan19@"
     # message = "hello world"
     # creates SMTP session
-    s = smtplib.SMTP("smtp.gmail.com", 587)
+    s = smtplib.SMTP('smtp.googlemail.com', 465)
     s.ehlo()
     s.starttls()
     # s.ehlo()
