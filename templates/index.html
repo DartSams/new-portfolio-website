@@ -40,9 +40,11 @@ Im a full stack web developer.</pre>
         <div id="current-project">
             <button id="start" onclick="expand(id)"><img src="static/images/down.png" alt="" id="img_button"> Current Project <img src="static/images/down.png" alt="" id="img_button"></button>
         </div>
-        <ul id="list">
-
-        </ul>     
+        <div id="project-list-container">
+            <ul id="list">
+            </ul> 
+        </div>
+            
     </div>
 
     <div id="about">
@@ -121,88 +123,83 @@ my knowledge.</pre>
 
         const projects_images = [
             "blackjack preview.PNG","Discord-Server-Banner.jpg","flask rest crud preview.PNG","mysql preview.png",
-            "rpg preview.PNG","space invaders preview.PNG","speed typing preview.PNG","tictactoe preview.PNG"
+            "rpg preview.PNG","space invaders preview.PNG","speed typing preview.PNG","tictactoe preview.PNG",
+            "twitter clone preview.png"
         ]
 
         const projects_names = [
             "blackjack preview","Discord Server Bot","flask rest crud preview","mysql preview",
-            "rpg preview","space invaders preview","speed typing preview","tictactoe preview"
+            "rpg preview","space invaders preview","speed typing preview","tictactoe preview",
+            "twitter clone preview"
         ]
+        
+        var startNum = 0;
+        let num = 4;
+        let projectLimiter = 4;
+
         let ul = document.getElementById("list")
-        for (let i = 0;i<projects_images.length/2;i+=1) {
-            let li = document.createElement("li");
-            let img = document.createElement("img");
-            img.src = 'static/images/project_preview/' + projects_images[i]
-            li.appendChild(img);
-            li.appendChild(document.createTextNode(projects_names[i]))
-            ul.appendChild(li)
-        }
+        function showProjects(id){
 
-        let right = document.createElement("img");
-        right.src = "static/images/right.png"
-        right.style.width="50px"
-        right.style.height="50px"
-        right.setAttribute('onclick','nextUp()')
-        ul.appendChild(right)
+            document.getElementsByTagName("li").innerHTML = ""
+            let button = document.getElementById(id);
 
-        function nextUp() {
-            ul.innerHTML = ""
-            let num = 4;
-            let i = 0;
-            for (let i = num;i<projects_images.length;i++) {
-                console.log(projects_images.length)
-                if (i === projects_images.length) {
-                    // 
+
+            if (button !== null) {
+                let splitButton = id.split(":");
+                let status = splitButton[0];
+                let value = splitButton[1];
+
+                // console.log(status,value)
+                if (status === "up") {
+                    startNum+=parseInt(4)
+                    projectLimiter+=4
+                    button.setAttribute("id",`up:${startNum}`)
+                    // removeElements()
+                    ul.innerHTML = ""
+
+                } else if (status === "down") {
+                    startNum-=parseInt(4)
+                    projectLimiter-=4
+                    button.setAttribute("id",`down:${startNum}`)
+                    ul.innerHTML = ""
                 } else {
-                    let li = document.createElement("li");
-                    let img = document.createElement("img");
-                    img.src = 'static/images/project_preview/' + projects_images[i]
-                    li.appendChild(img);
-                    li.appendChild(document.createTextNode(projects_names[i]))
-                    ul.appendChild(li)
+                    let startNum = 0
                 }
+            } 
+            // console.log("starting at: ",startNum)
+            let slicedProjectsArray = projects_images.slice(startNum,projectLimiter)
+            // console.log(slicedProjectsArray)
+            for (let i = 0;i<slicedProjectsArray.length;i+=1) {
+                let li = document.createElement("li");
+                li.setAttribute("id","list-item")
+                let img = document.createElement("img");
+                img.src = 'static/images/project_preview/' + slicedProjectsArray[i]
+                li.appendChild(img);
+                li.appendChild(document.createTextNode(projects_names[i]))
+                ul.appendChild(li)
             }
+
             let first = ul.firstElementChild
+            // console.log(first)
             let left = document.createElement("img");
             left.src = "static/images/left.png"
             left.style.width="50px"
             left.style.height="50px"
-            left.setAttribute('onclick','perviousDown()')
+            left.setAttribute('onclick','showProjects(id)')
+            left.setAttribute("id","down:0")
             first.before(left)
 
             let right = document.createElement("img");
             right.src = "static/images/right.png"
             right.style.width="50px"
             right.style.height="50px"
-            right.setAttribute('onclick','nextUp()')
+            right.setAttribute('onclick','showProjects(id)')
+            right.setAttribute("id","up:0")
+            let end = document.getElementById("project-list-container")
             ul.appendChild(right)
-        }
 
-        function perviousDown() {
-            ul.innerHTML = ""
-            let num = 0;
-            let i = 0;
-            for (let i = num;i<projects_images.length/2;i++) {
-                console.log(projects_images.length)
-                if (i === projects_images.length) {
-                    //
-                } else {
-                    let li = document.createElement("li");
-                    let img = document.createElement("img");
-                    img.src = 'static/images/project_preview/' + projects_images[i]
-                    li.appendChild(img);
-                    li.appendChild(document.createTextNode(projects_names[i]))
-                    ul.appendChild(li)
-                }
-            }
-
-            let right = document.createElement("img");
-            right.src = "static/images/right.png"
-            right.style.width="50px"
-            right.style.height="50px"
-            right.setAttribute('onclick','nextUp()')
-            ul.appendChild(right)
         }
+        window.onload = showProjects("default:0")
     </script>
 </body>
 </html>
