@@ -21,7 +21,7 @@ from flask_mail import Mail, Message
 # from main import app
 
 app.config['MAIL_SERVER']='smtp.gmail.com'
-app.config['MAIL_PORT'] = 587
+app.config['MAIL_PORT'] = 465
 app.config['MAIL_USERNAME'] = 'dartagnansamsd@gmail.com'
 app.config['MAIL_PASSWORD'] = 'Dartagnan19@'
 app.config['MAIL_USE_TLS'] = False
@@ -48,13 +48,13 @@ def contact(msg):
 
     msg1 = Message(
           'Hello',
-       sender = 'xxx@xxx.com',
-       recipients = ['xxx@xxx.com'])
+       sender = 'python@gmail.com',
+       recipients = ['godofanime72@gmail.com'])
     msg1.body = "This is the email body"
     msg1.html = '<b>HTML</b> body 1234'
 
     with app.app_context():
-        mail.send(msg)
+        mail.send(msg1)
 
 
 if __name__ == "__main__":
