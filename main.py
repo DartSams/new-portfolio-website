@@ -46,6 +46,16 @@ def index():
 def contact(msg):
     print(msg)
 
+    msg1 = Message(
+          'Hello',
+       sender = 'xxx@xxx.com',
+       recipients = ['xxx@xxx.com'])
+    msg1.body = "This is the email body"
+    msg1.html = '<b>HTML</b> body 1234'
+
+    with app.app_context():
+        mail.send(msg)
+
 
 if __name__ == "__main__":
     socketio.run(app,debug=True)
