@@ -47,7 +47,24 @@ def index():
 def contact(msg):
     print(msg)
     # main(msg["name"],msg["email"],msg["message"])
-    sendEmail(msg["name"],msg["message"],msg["email"],"godofanime72@gmail.com")
+    # sendEmail(msg["name"],msg["message"],msg["email"],"godofanime72@gmail.com")
+    import os
+    from sendgrid import SendGridAPIClient
+    from sendgrid.helpers.mail import Mail
+
+    message = Mail(
+        from_email='dartagnansamsd@example.com',
+        to_emails='dartagnansamsd@example.com',
+        subject='Sending with Twilio SendGrid is Fun',
+        html_content='<strong>and easy to do anywhere, even with Python</strong>')
+    try:
+        sg = SendGridAPIClient("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")
+        response = sg.send(message)
+        print(response.status_code)
+        print(response.body)
+        print(response.headers)
+    except Exception as e:
+        print(e)
 
 if __name__ == "__main__":
     socketio.run(app,debug=True)
