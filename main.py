@@ -36,9 +36,9 @@ def contact(msg):
     conn = smtplib.SMTP_SSL('smtp.mail.yahoo.com', 465) 
     conn.ehlo()
     conn.login(email_address, passcode)
-    conn.sendmail(msg['email'],
-                email_address,
-                Subject + content + footer)
+    conn.sendmail(email_address,
+              email_address,
+              Subject + content + footer)
     conn.quit()
 
 
