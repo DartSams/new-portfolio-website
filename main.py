@@ -1,7 +1,6 @@
 from flask import Flask, render_template, redirect, request, flash, session, url_for
 from werkzeug.utils import secure_filename  # upload images
 import os
-import time  # return current date & time
 from flask_socketio import (
     SocketIO,
     emit,
@@ -27,18 +26,15 @@ def index():
 def contact(msg):
     print(msg)
     
-    email_address = 'dartagnansams1@yahoo.com'     # add email address here
-    Subject = 'Subject: From portfolio website'
-    content = f'{msg["message"]}' 
-    footer = '- Portfolio Website'    # add test footer 
-    # passcode = 'Python343419@'        # add passcode here
+    email_address = 'dartagnansams1@yahoo.com'
+    Subject = 'Subject: From portfolio website\n\n'
+    content = f'From-{msg["name"]}-{msg["email"]}\n{msg["message"]}' 
+    footer = '- Portfolio Website' 
     passcode = os.environ.get("yahoo_api_key")
     conn = smtplib.SMTP_SSL('smtp.mail.yahoo.com', 465) 
     conn.ehlo()
     conn.login(email_address, passcode)
-    conn.sendmail(email_address,
-              email_address,
-              Subject + content + footer)
+    conn.sendmail(email_address,email_address,Subject + content + footer)
     conn.quit()
 
 
