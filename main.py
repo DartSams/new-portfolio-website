@@ -41,20 +41,24 @@ def index():
 
     return render_template("index.html")
 
-
+import sendgrid
+import os
+from sendgrid.helpers.mail import *
 @socketio.on("contact")
-def contact(msg):
-    print(msg)
+def contact(msgj):
+    print(msgj)
 
-    msg1 = Message(
-          'Hello',
-       sender = 'python@gmail.com',
-       recipients = ['godofanime72@gmail.com'])
-    msg1.body = "This is the email body"
-    msg1.html = '<b>HTML</b> body 1234'
-
-    with app.app_context():
-        mail.send(msg1)
+    sg = sendgrid.SendGridAPIClient(api_key=os.environ.get("key"))
+    from_email = Email("dartagnansamsd@example.com")
+    to_email = To("godofanime72@example.com")
+    subject = "Sending with SendGrid is Fun"
+    content = Content("text/plain", "and easy to do anywhere, even with Python")
+    mail = Mail(from_email, to_email, subject, content)
+    print(mail)
+    response = sg.client.mail.send.post(request_body=mail.get())
+    print(response.status_code)
+    print(response.body)
+    print(response.headers)
 
 
 if __name__ == "__main__":
