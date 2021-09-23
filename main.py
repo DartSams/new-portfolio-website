@@ -48,17 +48,20 @@ from sendgrid.helpers.mail import *
 def contact(msgj):
     print(msgj)
 
-    sg = sendgrid.SendGridAPIClient(api_key=os.environ.get("key"))
-    from_email = Email("dartagnansamsd@example.com")
-    to_email = To("godofanime72@example.com")
-    subject = "Sending with SendGrid is Fun"
-    content = Content("text/plain", "and easy to do anywhere, even with Python")
-    mail = Mail(from_email, to_email, subject, content)
-    print(mail)
-    response = sg.client.mail.send.post(request_body=mail.get())
-    print(response.status_code)
-    print(response.body)
-    print(response.headers)
+    import smtplib
+    email_address = 'dartagnansams1@yahoo.com'     # add email address here
+    Subject = 'Subject: So long...\n\n'
+    content = ' Dear Test, \n This is a test message.\n\n ' 
+    footer = '- Test'    # add test footer 
+    # passcode = 'Python343419@'        # add passcode here
+    passcode = 'xghivoqldwfryrpu'
+    conn = smtplib.SMTP_SSL('smtp.mail.yahoo.com', 465) 
+    conn.ehlo()
+    conn.login(email_address, passcode)
+    conn.sendmail(email_address,
+                email_address,
+                Subject + content + footer)
+    conn.quit()
 
 
 if __name__ == "__main__":
