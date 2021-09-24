@@ -74,12 +74,30 @@ ul li {
     flex-direction: column;
     justify-content: space-between;
     margin: inherit;
+    align-items: baseline;
 }
 
 ul li img {
     width:180px
 }
 
+.card-div {
+    padding:10px;
+    background-color: rgb(1, 7, 7);
+    height:100%;
+    width:200px;
+}
+
+.card-div-buttons a{
+    margin: 0px 10px 0px 5px;
+}
+
+.github-link {
+    width:100%;
+    height: 100px;
+    background-color: red;
+    padding: 5px;
+}
 #start {
     width: 150px;
     height: 60px;

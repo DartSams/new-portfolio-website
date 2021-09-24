@@ -5,10 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio website</title>
-    <!-- <link rel="stylesheet" href="static/index.css">
-    <script src="static/index.js"></script> -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}" />
-    <script src="{{url_for('static', filename='index.js')}}"></script>
+    <link rel="stylesheet" href="static/index.css">
+    <script src="static/index.js"></script>
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}" />
+    <script src="{{url_for('static', filename='index.js')}}"></script> -->
 
 </head>
 <body>
@@ -121,17 +121,37 @@ my knowledge.</pre>
             console.log(msg)
         }) 
 
-        const projects_images = [
-            "blackjack preview.PNG","Discord-Server-Banner.jpg","flask rest crud preview.PNG","mysql preview.png",
-            "rpg preview.PNG","space invaders preview.PNG","speed typing preview.PNG","tictactoe preview.PNG",
-            "twitter clone preview.png"
-        ]
+
 
         const projects_names = [
-            "blackjack preview","Discord Server Bot","flask rest crud preview","mysql preview",
-            "rpg preview","space invaders preview","speed typing preview","tictactoe preview",
-            "twitter clone preview"
+            "blackjack","Discord Server Bot","flask rest crud","mysql",
+            "rpg ","space invaders ","speed typing ","tictactoe ",
+            "twitter clone "
         ]
+
+
+        const projects = {
+            "blackjack":{"name":"Blackjack",
+                        "image":"blackjack preview.PNG",
+                        "link":"blackjack",
+                        "tags":"python,tkinter"
+                        },
+            "Discord Server Bot":{"name":"Discord-bot",
+                        "image":"Discord-Server-Banner.jpg",
+                        "link":"discord-bot",
+                        "tags":"python,tkinter"
+                        },
+            "flask rest crud":{"name":"Flask Rest Crud",
+                        "image":"flask rest crud preview.PNG",
+                        "link":"Flask-login-app",
+                        "tags":"python,flask,flask-session"
+                        },
+            "mysql":{"name":"Mysql Database gui",
+                        "image":"mysql preview.png",
+                        "link":"database-gui-",
+                        "tags":"python,tkinter"
+                        }
+        }
         
         var startNum = 0;
         let num = 4;
@@ -140,7 +160,7 @@ my knowledge.</pre>
         let ul = document.getElementById("list")
         function showProjects(id){
 
-            document.getElementsByTagName("li").innerHTML = ""
+            // document.getElementsByTagName("li").innerHTML = ""
             let button = document.getElementById(id);
 
 
@@ -167,16 +187,71 @@ my knowledge.</pre>
                 }
             } 
             // console.log("starting at: ",startNum)
-            let slicedProjectsArray = projects_images.slice(startNum,projectLimiter)
+            let slicedProjectsArray = projects_names.slice(startNum,projectLimiter)
             // console.log(slicedProjectsArray)
             for (let i = 0;i<slicedProjectsArray.length;i+=1) {
+                // let li = document.createElement("li");
+                // li.setAttribute("id","list-item")
+                // let img = document.createElement("img");
+                // img.src = 'static/images/project_preview/' + slicedProjectsArray[i]
+                // li.appendChild(img);
+                // li.appendChild(document.createTextNode(projects_names[i]))
+                // ul.appendChild(li)
+                let y2 = projects[slicedProjectsArray[i]]
+
+                let cardDiv = document.createElement("div");
+                cardDiv.setAttribute("class","card-div");
                 let li = document.createElement("li");
                 li.setAttribute("id","list-item")
                 let img = document.createElement("img");
-                img.src = 'static/images/project_preview/' + slicedProjectsArray[i]
+                img.src = 'static/images/project_preview/' + y2['image']
                 li.appendChild(img);
-                li.appendChild(document.createTextNode(projects_names[i]))
-                ul.appendChild(li)
+                let title = document.createElement("h3");
+                title.innerHTML = slicedProjectsArray[i]
+                li.appendChild(title)
+                let projectDescription = document.createElement("p");
+                projectDescription.innerHTML = "Future description create table later";
+                li.appendChild(projectDescription)
+                let breaker = document.createElement("hr");
+                breaker.setAttribute("width","190px")
+                // li.appendChild(breaker);
+                let cardDivButtons = document.createElement("div");
+                cardDivButtons.setAttribute("class","card-div-buttons")
+                let githubLink = document.createElement("a");
+                githubLink.setAttribute("href","http://github.com/DartSams/" +y2['link'])
+                githubLink.setAttribute("target","__blank")
+                githubLink.setAttribute("class","github-link")
+                githubLink.innerHTML = "Github";
+                cardDivButtons.appendChild(githubLink)
+                let liveProjectLink = document.createElement("a");
+                liveProjectLink.setAttribute("href","http://github.com/DartSams/" +y2['link'])
+                liveProjectLink.setAttribute("target","__blank")
+                liveProjectLink.setAttribute("class","github-link")
+                liveProjectLink.innerHTML = "Live";
+                cardDivButtons.appendChild(liveProjectLink)
+                let breaker2 = document.createElement("hr");
+                breaker2.setAttribute("width","190px")
+                cardDivButtons.appendChild(breaker2);
+                let projectTagsDiv = document.createElement("div");
+                li.appendChild(projectTagsDiv)
+
+//                //use for loop to produce all tags in current project
+                // let projectTags = document.createElement("p")
+                // let y = projects[slicedProjectsArray[i]]
+                // console.log(y['tags'])
+                // let splitTags = y['tags'].split(",")
+                // // projectTags.innerHTML = splitTags
+                // // projectTagsDiv.appendChild(projectTags)
+                // for (let j = 0;j<y.length;j++) {
+                //     let projectTags = document.createElement("p");
+                //     // let splitTags = y['tags'].split(",")
+                //     projectTags.innerHTML = splitTags
+                //     projectTagsDiv.appendChild(projectTags)
+                // }
+
+                li.appendChild(cardDivButtons)
+                cardDiv.appendChild(li)
+                ul.appendChild(cardDiv)
             }
 
             let first = ul.firstElementChild
