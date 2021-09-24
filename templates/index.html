@@ -21,6 +21,20 @@
         <a href="#contact" id="nav-contact" onclick="setActive(id)">Contact</a>
     </nav>
 
+    <div id="sidebar">
+        <div class="toggle" onclick="showMobileNav()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <a href="#home" id="nav-home" onclick="setActive(id)">Home</a>
+        <a href="#projects" id="nav-projects" onclick="setActive(id)">Projects</a>
+        <a href="#about" id="nav-about" onclick="setActive(id)">About</a>
+        <a href="resume.docx" download="Dartagnan's Resume" id="nav-resume" onclick="setActive(id)">Resume</a> 
+        <a href="#contact" id="nav-contact" onclick="setActive(id)">Contact</a>
+
+    </div>
+
     <div id="home">
         <div class="title">
             <br>
@@ -58,10 +72,10 @@ Im a full stack web developer.</pre>
                 <div ><a href="https://www.reddit.com/" target="_blank"><img src="static/images/reddit-1.5.svg" alt="reddit"></a></div>
                 <div ><a href="https://github.com/DartSams" target="_blank"><img src="static/images/github-icon.svg" alt="github"></a></div>
             </div>
-            <pre>
+            <p>
 Welcome to my portfolio website.I'm a passionate full stack web 
 developer in Augusta, Ga constantly growing and expanding 
-my knowledge.</pre>
+my knowledge.</p>
         </div>
 
         <aside>
@@ -125,32 +139,57 @@ my knowledge.</pre>
 
         const projects_names = [
             "blackjack","Discord Server Bot","flask rest crud","mysql",
-            "rpg ","space invaders ","speed typing ","tictactoe ",
-            "twitter clone "
+            "rpg","space invaders","speed typing","tictactoe",
+            "twitter clone"
         ]
-
 
         const projects = {
             "blackjack":{"name":"Blackjack",
                         "image":"blackjack preview.PNG",
                         "link":"blackjack",
-                        "tags":"python,tkinter"
+                        "tags":"python,tkinter,mysql"
                         },
             "Discord Server Bot":{"name":"Discord-bot",
                         "image":"Discord-Server-Banner.jpg",
                         "link":"discord-bot",
-                        "tags":"python,tkinter"
+                        "tags":"python,tkinter,mysql,discord api"
                         },
             "flask rest crud":{"name":"Flask Rest Crud",
                         "image":"flask rest crud preview.PNG",
                         "link":"Flask-login-app",
-                        "tags":"python,flask,flask-session"
+                        "tags":"python,flask,flask-session,mysql,js,html,css"
                         },
             "mysql":{"name":"Mysql Database gui",
                         "image":"mysql preview.png",
                         "link":"database-gui-",
-                        "tags":"python,tkinter"
-                        }
+                        "tags":"python,tkinter,mysql"
+                        },
+            "rpg":{"name":"Random Person Generator",
+                        "image":"rpg preview.PNG",
+                        "link":"Random-Person-Generator",
+                        "tags":"python,tkinter,json"
+                    },
+            "space invaders":{"name":"Space Invaders",
+                        "image":"space invaders preview.PNG",
+                        "link":"Space_Invader",
+                        "tags":"python,pygame"
+                    },
+            "speed typing":{"name":"Speed Typing Tester",
+                        "image":"speed typing preview.PNG",
+                        "link":"speed-typing-tester",
+                        "tags":"python,pygame"
+                    },
+            "tictactoe":{"name":"Tic-Tac-Toe",
+                        "image":"tictactoe preview.PNG",
+                        "link":"tic-tac-toe",
+                        "tags":"python,pygame"
+                    },
+            "twitter clone":{"name":"Twitter Clone",
+                        "image":"twitter clone preview.PNG",
+                        "link":"Twitter-clone",
+                        "tags":"python,flask,session,js,html,css,mysql"
+                    },
+
         }
         
         var startNum = 0;
@@ -197,14 +236,14 @@ my knowledge.</pre>
                 // li.appendChild(img);
                 // li.appendChild(document.createTextNode(projects_names[i]))
                 // ul.appendChild(li)
-                let y2 = projects[slicedProjectsArray[i]]
+                let projectJson = projects[slicedProjectsArray[i]]
 
                 let cardDiv = document.createElement("div");
                 cardDiv.setAttribute("class","card-div");
                 let li = document.createElement("li");
                 li.setAttribute("id","list-item")
                 let img = document.createElement("img");
-                img.src = 'static/images/project_preview/' + y2['image']
+                img.src = 'static/images/project_preview/' + projectJson['image']
                 li.appendChild(img);
                 let title = document.createElement("h3");
                 title.innerHTML = slicedProjectsArray[i]
@@ -214,42 +253,44 @@ my knowledge.</pre>
                 li.appendChild(projectDescription)
                 let breaker = document.createElement("hr");
                 breaker.setAttribute("width","190px")
-                // li.appendChild(breaker);
+                li.appendChild(breaker);
                 let cardDivButtons = document.createElement("div");
                 cardDivButtons.setAttribute("class","card-div-buttons")
                 let githubLink = document.createElement("a");
-                githubLink.setAttribute("href","http://github.com/DartSams/" +y2['link'])
+                githubLink.setAttribute("href","http://github.com/DartSams/" +projectJson['link'])
                 githubLink.setAttribute("target","__blank")
                 githubLink.setAttribute("class","github-link")
                 githubLink.innerHTML = "Github";
                 cardDivButtons.appendChild(githubLink)
                 let liveProjectLink = document.createElement("a");
-                liveProjectLink.setAttribute("href","http://github.com/DartSams/" +y2['link'])
+                liveProjectLink.setAttribute("href","http://github.com/DartSams/" +projectJson['link'])
                 liveProjectLink.setAttribute("target","__blank")
-                liveProjectLink.setAttribute("class","github-link")
+                liveProjectLink.setAttribute("class","live-link")
                 liveProjectLink.innerHTML = "Live";
                 cardDivButtons.appendChild(liveProjectLink)
                 let breaker2 = document.createElement("hr");
                 breaker2.setAttribute("width","190px")
                 cardDivButtons.appendChild(breaker2);
                 let projectTagsDiv = document.createElement("div");
+                projectTagsDiv.setAttribute("class","project-tags")
+
+                let tags = projectJson['tags'].split(",");
+                // console.log(tags)
+                
+                for (j = 0;j<tags.length;j++) {
+                    let projectTags = document.createElement("p")
+                    if (tags[j] === undefined) {
+                        // 
+                    } else {
+                        projectTags.innerHTML = tags[j]                    }
+                    // console.log(tags[j])
+
+                    projectTagsDiv.appendChild(projectTags)
+                }
+                li.appendChild(cardDivButtons)
                 li.appendChild(projectTagsDiv)
 
-//                //use for loop to produce all tags in current project
-                // let projectTags = document.createElement("p")
-                // let y = projects[slicedProjectsArray[i]]
-                // console.log(y['tags'])
-                // let splitTags = y['tags'].split(",")
-                // // projectTags.innerHTML = splitTags
-                // // projectTagsDiv.appendChild(projectTags)
-                // for (let j = 0;j<y.length;j++) {
-                //     let projectTags = document.createElement("p");
-                //     // let splitTags = y['tags'].split(",")
-                //     projectTags.innerHTML = splitTags
-                //     projectTagsDiv.appendChild(projectTags)
-                // }
 
-                li.appendChild(cardDivButtons)
                 cardDiv.appendChild(li)
                 ul.appendChild(cardDiv)
             }
@@ -262,6 +303,7 @@ my knowledge.</pre>
             left.style.height="50px"
             left.setAttribute('onclick','showProjects(id)')
             left.setAttribute("id","down:0")
+            left.setAttribute("class","project-left")
             first.before(left)
 
             let right = document.createElement("img");
@@ -270,6 +312,7 @@ my knowledge.</pre>
             right.style.height="50px"
             right.setAttribute('onclick','showProjects(id)')
             right.setAttribute("id","up:0")
+            right.setAttribute("class","project-right")
             let end = document.getElementById("project-list-container")
             ul.appendChild(right)
 

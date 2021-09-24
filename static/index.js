@@ -1,5 +1,5 @@
 function setActive (id) {
-    console.log(id)
+    showMobileNav()
     var navBar = document.getElementById("nav-bar").childNodes;
     var i;
     for (i = 0; i < navBar.length; i++) {
@@ -71,7 +71,7 @@ function createCurrentProject (id) {
     currentProjectDiv.style.cssText = `
         display:flex;
         justify-content:space-around;
-        align-content:center
+        align-content:center;
     `;
     
     let img = document.createElement("img");
@@ -79,6 +79,7 @@ function createCurrentProject (id) {
     img.style.width = "300px"
 
     let description = document.createElement("div");
+    description.setAttribute("class","currentProjectDescription")
     description.style.cssText = `
         display:flex;
         flex-direction:column;
@@ -113,4 +114,13 @@ function openPopup () {
 function closePopup () {
     let popupContainer = document.getElementById("popup-container")
     popupContainer.style.display = "none"
+}
+
+function showMobileNav() {
+    let openSideBar=document.getElementById("sidebar");
+    if (openSideBar.style.left < "0px") {
+        openSideBar.style.left = "0px"
+    } else {
+        openSideBar.style.cssText ="left:-330px"
+    }
 }
