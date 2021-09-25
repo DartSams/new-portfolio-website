@@ -121,6 +121,6 @@ function showMobileNav() {
     if (openSideBar.style.left < "0px") {
         openSideBar.style.left = "0px"
     } else {
-        openSideBar.style.cssText ="left:-330px"
+        openSideBar.style.cssText ="left:-310px"
     }
 }

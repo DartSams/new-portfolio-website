@@ -5,10 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio website</title>
-    <link rel="stylesheet" href="static/index.css">
-    <script src="static/index.js"></script>
-    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}" />
-    <script src="{{url_for('static', filename='index.js')}}"></script> -->
+    <!-- <link rel="stylesheet" href="static/index.css">
+    <script src="static/index.js"></script> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}" />
+    <script src="{{url_for('static', filename='index.js')}}"></script>
 
 </head>
 <body>
@@ -136,35 +136,39 @@ my knowledge.</p>
         }) 
 
 
-
         const projects_names = [
-            "blackjack","Discord Server Bot","flask rest crud","mysql",
-            "rpg","space invaders","speed typing","tictactoe",
-            "twitter clone"
+            "twitter clone","flask rest crud","Discord Server Bot",
+            "mysql","blackjack","space invaders","speed typing",
+            "tictactoe"
         ]
 
         const projects = {
-            "blackjack":{"name":"Blackjack",
-                        "image":"blackjack preview.PNG",
-                        "link":"blackjack",
-                        "tags":"python,tkinter,mysql"
-                        },
-            "Discord Server Bot":{"name":"Discord-bot",
-                        "image":"Discord-Server-Banner.jpg",
-                        "link":"discord-bot",
-                        "tags":"python,tkinter,mysql,discord api"
+            "twitter clone":{"name":"Twitter Clone",
+                        "image":"twitter clone preview.PNG",
+                        "link":"Twitter-clone",
+                        "tags":"python,flask,session,js,html,css,mysql"
                         },
             "flask rest crud":{"name":"Flask Rest Crud",
                         "image":"flask rest crud preview.PNG",
                         "link":"Flask-login-app",
                         "tags":"python,flask,flask-session,mysql,js,html,css"
                         },
+            "Discord Server Bot":{"name":"Discord-bot",
+                        "image":"Discord-Server-Banner.jpg",
+                        "link":"discord-bot",
+                        "tags":"python,tkinter,mysql,discord api"
+                        },
             "mysql":{"name":"Mysql Database gui",
                         "image":"mysql preview.png",
                         "link":"database-gui-",
                         "tags":"python,tkinter,mysql"
                         },
-            "rpg":{"name":"Random Person Generator",
+            "blackjack":{"name":"Blackjack",
+                        "image":"blackjack preview.PNG",
+                        "link":"blackjack",
+                        "tags":"python,tkinter,mysql"
+                        },
+                        "rpg":{"name":"Random Person Generator",
                         "image":"rpg preview.PNG",
                         "link":"Random-Person-Generator",
                         "tags":"python,tkinter,json"
@@ -184,12 +188,6 @@ my knowledge.</p>
                         "link":"tic-tac-toe",
                         "tags":"python,pygame"
                     },
-            "twitter clone":{"name":"Twitter Clone",
-                        "image":"twitter clone preview.PNG",
-                        "link":"Twitter-clone",
-                        "tags":"python,flask,session,js,html,css,mysql"
-                    },
-
         }
         
         var startNum = 0;
@@ -229,15 +227,7 @@ my knowledge.</p>
             let slicedProjectsArray = projects_names.slice(startNum,projectLimiter)
             // console.log(slicedProjectsArray)
             for (let i = 0;i<slicedProjectsArray.length;i+=1) {
-                // let li = document.createElement("li");
-                // li.setAttribute("id","list-item")
-                // let img = document.createElement("img");
-                // img.src = 'static/images/project_preview/' + slicedProjectsArray[i]
-                // li.appendChild(img);
-                // li.appendChild(document.createTextNode(projects_names[i]))
-                // ul.appendChild(li)
                 let projectJson = projects[slicedProjectsArray[i]]
-
                 let cardDiv = document.createElement("div");
                 cardDiv.setAttribute("class","card-div");
                 let li = document.createElement("li");
