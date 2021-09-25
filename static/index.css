@@ -527,10 +527,9 @@
         text-align: center;
     }
 
-    .popup .popup-header button,.popup .popup-body h3,.popup .popup-footer button{
+    .popup .popup-header {
         margin: 0;
         display: flex;
         justify-content: flex-end;
-        color:black
     }
 }
