@@ -18,7 +18,6 @@ socketio = SocketIO(app)  # init the socket connection
 
 @app.route("/")
 def index():
-
     return render_template("index.html")
 
 
@@ -28,7 +27,7 @@ def contact(msg):
     
     email_address = 'dartagnansams1@yahoo.com'
     Subject = 'Subject: From portfolio website\n\n'
-    content = f'From-{msg["name"]}-{msg["email"]}\n{msg["message"]}' 
+    content = f'From:{msg["name"]}\n By:{msg["email"]}\n\n{msg["message"]}' 
     footer = '- Portfolio Website' 
     passcode = os.environ.get("yahoo_api_key")
     conn = smtplib.SMTP_SSL('smtp.mail.yahoo.com', 465) 
