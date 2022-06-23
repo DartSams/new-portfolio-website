@@ -25,36 +25,15 @@ def index():
 def send_email(msg):
     print(msg)
     
-    email_address = 'dartagnansams1@icloud.com'
+    email_address = 'dartagnansams1@yahoo.com'
     Subject = 'Subject: From portfolio website\n\n'
     content = f'From:{msg["name"]}\n By:{msg["email"]}\n\n{msg["message"]}' 
     footer = '- Portfolio Website' 
-    passcode = os.environ.get('yahoo_api_key')
-    conn = smtplib.SMTP('smtp.mail.yahoo.com', 465) 
+    passcode = "hknjyqdnuooiiegy" #IMPORTANT this is yahoo api token needed to login
+    conn = smtplib.SMTP_SSL('smtp.mail.yahoo.com', 465) 
     conn.ehlo()
-    # conn.start()
-    conn.starttls()
     conn.login(email_address, passcode)
-    print("made it here")
-    try:
-        conn.sendmail(email_address,email_address,Subject + content + footer)
-    except:
-        print("no mail sent")
-    conn.quit()
-
-    # context = ssl.create_default_context()
-    # with smtplib.SMTP('smtp.mail.yahoo.com', 587) as server:
-    #     server.ehlo()  # Can be omitted
-    #     server.starttls(context=context)
-    #     server.ehlo()  # Can be omitted
-    #     server.login('dartagnansams1@yahoo.com', passcode)
-    #     server.sendmail(msg["email"], 'dartagnansams1@yahoo.com', content)
-
-    # server = smtplib.SMTP('smtp.mail.yahoo.com', 465)
-    # server.starttls()
-    # server.login(email_address,"STAYOUT3434@")
-    # server.sendmail("dartagnansams1@yahoo.com",msg["email"],"message sent from python")
-    # print("mail sent")
+    conn.sendmail(email_address,email_address,Subject + content + footer)
 
 if __name__ == "__main__":
     socketio.run(app,debug=True,port=8000)
