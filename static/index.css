@@ -13,17 +13,23 @@
     }
 
     nav{
+        float: right;
         display: flex;
         flex-direction: row;
-        justify-content: space-around;
+        /* justify-content: space-around; */
     }
 
     nav a,#home .title a,#projects #current-project button{
-        border:2px solid white;
+        /* border:2px solid white; */
         background: none;
         cursor: pointer;
         padding: 10px;
         color:white
+    }
+
+    nav img{
+        width:20px;
+        height:20px;
     }
 
     #sidebar {

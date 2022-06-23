@@ -1,0 +1,161 @@
+@media (min-width:1050px){
+    /* h1,h2,h3,h4 {
+        font-size: 30px;
+    } */
+
+    body {
+        /* background: url("https://codemyui.com/wp-content/uploads/2019/06/Shooting-Star-Background-in-Pure-CSS-1.gif") repeat center center fixed;  */
+        background-image: url("https://wallpaperaccess.com/full/653176.jpg");
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        overflow: hidden;
+        font-size: 20px;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    nav{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        position: fixed;
+        /* float: right; */
+        color:white;
+    }
+
+    nav a{
+        background: none;
+        cursor: pointer;
+        padding: 10px;
+        color:white;
+        text-decoration: none;
+    }
+
+    nav a:hover{
+        border:2px solid white;
+    }
+
+    nav img{
+        width:20px;
+        height:20px;
+    }
+
+    main #home{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        height: 100vh;
+        color:white;
+    }
+
+    main #about{
+        width:100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color:white;
+    }
+
+    main #projects{
+        width:100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color:white;
+    }
+
+    main #projects ul{
+        list-style-type: none;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    main #projects img{
+        width:20vw;
+        height: 20vh;
+    }
+
+    main li{
+        margin: 20px;
+    }
+
+    main #contact{
+        width:100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color:white;
+    }
+
+    #contact .contact-form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #contact .contact-form input,#contact .contact-form textarea {
+        color:white;
+        width:400px;
+        border: 2px solid white;
+        background-color: rgb(30,  29,  50);
+        margin-top:5px;
+        resize: none;
+        font-size: 20px;
+    }
+
+    #contact .contact-form a {
+        margin-left:330px;
+        margin-top: 3px;
+        width:70px;
+        border:2px solid white;
+        border-radius: 10px;
+        text-align: center;
+        font-size: 20px;
+    }
+
+    #contact .contact-form a:hover {
+        cursor: pointer;
+        background-color: rgb(121,  97, 248);
+    }
+
+    #popup-container {
+        display: none;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top:0;
+        left:0;
+        height: 100vh;
+        width:100vw;
+        background-color: rgba(0,0,0,0.6);
+    }
+
+    .popup {
+        background-color: white;
+        width: 300px;
+        max-width: 100%;
+        padding:10px 30px;
+        border-radius: 5px;
+        text-align: center;
+        color:black
+    }
+
+    .popup .popup-header {
+        margin: 0;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+}

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
+    <title>Portfolio Website</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index2.css') }}" />
+    <script src="{{url_for('static', filename='index.js')}}"></script>
+</head>
+<body>
+    <header>
+        <nav id="nav-bar">
+            <a href="#home" id="nav-home" onclick="setActive(id)">Home</a>
+            <a href="#about" id="nav-about" onclick="setActive(id)">About</a>
+            <a href="#projects" id="nav-projects" onclick="setActive(id)">Projects</a>
+            <a href="#contact" id="nav-contact" onclick="setActive(id)">Contact</a>
+            <a href="resume.docx" download="Dartagnan's Resume" id="nav-resume" onclick="setActive(id)">Resume</a> 
+            <a href="https://github.com/DartSams" target="_blank"><img src="static\images\GitHub-Mark-Light-64px.png" alt="Dartagnan Sams Github link"></a>
+            <a href=""><img src="static\images\LinkedIn.png" alt=""></a>
+        </nav>
+    </header>
+
+    <main>
+        <div id="home">
+            <h1>Dartagnan Sams</h1>
+            <p>Im a full stack web developer</p>
+        </div>
+
+        <div id="about">
+            <h2>About</h2>
+            <h3>Dartagnan Sams</h3>
+            <pre>I'm Dartagnan a passionate freelancer bringing you top quality designs and programming.
+I am experienced in web development including backend and frontend designs also in database design.I have created
+responsive websites that are fast,easy to use,and built with best practices.
+            </pre>
+        </div>
+
+        <div id="projects">
+            <ul>
+                <div id="project-column">
+                    <li><a href=""><img src="static\images\project_preview\blackjack preview.PNG" alt="Project 1"></a></li>
+                    <li><a href=""><img src="static\images\project_preview\tictactoe preview.PNG" alt="Project 2"></a></li>
+                </div>
+
+                <div id="project-column">
+                    <li><a href=""><img src="static\images\project_preview\twitter clone preview.PNG" alt="Project 3"></a></li>
+                    <li><a href=""><img src="static\images\project_preview\EaglePlanner preview.png" alt="Project 4"></a></li>
+                </div>
+
+                <div id="project-column">
+                    <li><a href=""><img src="static\images\project_preview\polls preview.png" alt="Project 5"></a></li>
+                </div>
+            </ul>
+        </div>
+
+        <div id="contact">
+            <h2>Contact</h2>
+            <h4>Have a question or want to work together?</h4>
+            <div class="contact-form">
+                <input type="text" placeholder="Name" id="name">
+                <input type="text" placeholder="Email" id="email">
+                <textarea name="contact-message" id="contact-message"  cols="10" rows="10" placeholder="Your message..."></textarea>
+                <a type="submit" onclick="sendInfo()">Submit</a>
+            </div>
+    
+            <div id="popup-container">
+                <div class="popup">
+                    <div class="popup-header"><button onclick="closePopup()">X</button></div>
+                    <div class="popup-body"><h3>Your email has been successfully sent.</h3></div>
+                    <div class="popup-footer">
+                        <button id="close" onclick="closePopup()">
+                            OK
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+<script>
+    var socket = io();
+
+    function sendInfo() {
+        let name = document.getElementById("name").value
+        let email = document.getElementById("email").value
+        let message = document.getElementById("contact-message").value
+        socket.emit("send_email",{name:name,email:email,message:message})
+
+        document.getElementById("name").value = ""
+        document.getElementById("email").value = ""
+        document.getElementById("contact-message").value = ""
+        openPopup()
+    }
+
+    socket.on("contact" ,function(msg){
+        console.log(msg)
+    })
+</script>
+</html>
