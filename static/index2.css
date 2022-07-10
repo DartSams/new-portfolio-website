@@ -110,7 +110,7 @@
     li:hover #dropdown-menu {
         border:3px solid rgb(121,  97, 248);
         bottom: 5;
-        height: 25%;
+        height: 15%;
     }
 
     #repo-link{
