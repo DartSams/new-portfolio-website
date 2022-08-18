@@ -7,7 +7,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
     <title>Portfolio Website</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='index2.css') }}" />
-    <script src="{{url_for('static', filename='index.js')}}"></script>
+    <script src="{{url_for('static', filename='index.js')}}" defer></script>
 </head>
 <body>
     <header>
@@ -16,9 +16,9 @@
             <a href="#about" id="nav-about" onclick="setActive(id)">About</a>
             <a href="#projects" id="nav-projects" onclick="setActive(id)">Projects</a>
             <a href="#contact" id="nav-contact" onclick="setActive(id)">Contact</a>
-            <a href="resume.docx" download="Dartagnan's Resume" id="nav-resume" onclick="setActive(id)">Resume</a> 
+            <a href="resume.pdf" download id="nav-resume" >Resume</a> 
             <a href="https://github.com/DartSams" target="_blank"><img src="static\images\GitHub-Mark-Light-64px.png" alt="Dartagnan Sams Github link"></a>
-            <a href=""><img src="static\images\LinkedIn.png" alt=""></a>
+            <a href="https://www.linkedin.com/in/dartagnan-sams-387111197/"><img src="static\images\LinkedIn.png" alt=""></a>
         </nav>
     </header>
 
@@ -86,16 +86,6 @@ responsive websites that are fast,easy to use,and built with best practices.
                 </div>
 
                 <div id="project-column">
-                    <li>
-                        <h2>Poll App</h2>
-                        <a href="https://github.com/DartSams/Poll-App" target="_blank">
-                            <img src="static\images\project_preview\polls preview.png" alt="Project 5">
-                            <div id="dropdown-menu">
-                                <a href="https://python-poll.herokuapp.com/" target="_blank"><button>Live</button> </a>
-                                <a href="https://github.com/DartSams/Poll-App" target="_blank"><button>Github</button> </a>
-                             </div>
-                        </a>
-                    </li>
 
                     <li>
                         <h2>Unit calculater</h2>
