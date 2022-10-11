@@ -24,6 +24,10 @@ def index():
 @socketio.on("send_email")
 def send_email(msg):
     print(msg)
+
+
+    print("hello")
+
     
     email_address = 'dartagnansams1@yahoo.com'
     Subject = 'Subject: From portfolio website\n\n'
