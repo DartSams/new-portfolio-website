@@ -22,9 +22,19 @@ def index():
     return render_template("index2.html")
 
 
+<<<<<<< HEAD
 # @socketio.on("send_email")
 # def send_email(msg):
 #     print(msg)
+=======
+@socketio.on("send_email")
+def send_email(msg):
+    print(msg)
+
+
+    print("hello")
+
+>>>>>>> 2e224112229bdacdc060ffd6256849b678270919
     
 #     email_address = 'dartagnansams1@yahoo.com'
 #     Subject = 'Subject: From portfolio website\n\n'
